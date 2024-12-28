@@ -1,6 +1,8 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import resList from "../utils/mockData";
+import Loader from "../Loading";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   // Local State Variable - Super powerful variable
@@ -28,11 +30,17 @@ const Body = () => {
   };
 
   // if (listOfRestaurants.length === 0) {
-  //   return <h1>Loading...</h1>;
+  //   return <Loader />;
   // }
-  return (
+  return listOfRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
+        <div>
+          <input type="text" className="search-box" value />
+          <button onClick={() => console.log("search clicked")} >Search</button>
+        </div>
         <button
           className="filter-btn"
           onClick={() => {
