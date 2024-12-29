@@ -1,0 +1,110 @@
+we can use the script part in the package.json to defined our scripts 
+
+eg  "scripts": {
+    "start":"parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+},
+
+how i can just type 
+"npm run start" to run the dev server or 
+"npm run build" to run the pro server 
+
+also npm run start is the same as npm start . works only for start 
+
+If you’re not sure how to start the project in a new
+company then find these scripts in package.json and use
+them.
+
+
+const heading = React.createElement("h1", {id: "heading"}, "sandy react")
+the above is a react element(object) and when it is rendered to the dom it becomes an html element 
+
+//React.createElement => object => HTML element(render)
+
+the root is then created by the reactDom then what ever react object is passed into the render() will replace what we have in the root html 
+
+
+
+
+const jsxheading = <h1> jsx heading</h1>
+const root = ReactDOM.createRoot(document.getElementById("root"))
+
+root.render(jsxheading)
+
+we use JSX to make our html in react more readable 
+we can write react without JSX
+
+JSX is a conversion where er merge html and js together 
+
+JSX is not html, it is different 
+JSX is a html-like syntax 
+
+when we write code is it for machines or humans 
+we are writting first for human then machines 
+
+JSX is not a proper javascript . so bundler does the job behind the scence 
+
+so parcel transpiled the jsx before it reaches the js engine using babel 
+
+Babel does the transpiling of jsx to a js engine understandable code 
+
+Babel is a javascript compiller or transpiler 
+
+Babel is not created by facebook 
+
+How does the code run , 
+
+JSX ==> React.createElement ==> React.Element-JS Object ==> HtmlELement(render)
+
+Babel converts the JSX to react.createElement which is then converted to JS Object then to Html element 
+
+Babel also transpils your code so that older browser understands 
+
+parcel manages Babel 
+
+no hypens - in jsx
+jsx uses only carmelCasing for attributes 
+
+multiple line  Jsx should be wrapped in ()
+
+React component 
+
+Two types of components 
+-Class Based component -old
+-Functional Component - new
+
+React functional component is just a normal javascript function  which returns some JSX (react element)
+
+const HeadingComponent = () => {
+  return <h1>Heading text </h1>;
+};
+
+root.render(<HeadingComponent/>)
+
+this is now you render a functional component to root   
+
+
+What is the differece between a react component and a react element 
+
+component composition  is putting a react functional component inside another 
+
+JSX takes care of injection attacks 
+
+whenever any data is wrapped , JSK prevents cross side scripting attacks  by sanitising our data
+
+const HeadingComponent = () => {
+  return (
+    <div>
+      <h1>Heading text </h1>
+      <HeadingComponent2 />
+      <HeadingComponent2></HeadingComponent2>
+      {HeadingComponent2()}
+    </div>
+  );
+};
+
+the 3 ways of passing a react component inside another component  are valid 
+
+
+

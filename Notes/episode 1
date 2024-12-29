@@ -1,0 +1,53 @@
+//React.CreateElement("the name of the element", {the attributes}, the children/content)
+// the {} is where you give attributes to your tag
+
+// if you need to pass two or more children in the last paramenter of React.CreateElement, use and Array
+//the root.render(parent) : puts the parent in the root div in the html
+// if there is a content already in the root div , the root.render will replace the content inside root not appended 
+//React Element is a Java-Script object at the end of the day
+
+
+
+<!-- the order of the files are always in sequence,
+ your react must come before the app.jsx -->
+<!-- he crossorigin attribute in the <script> tag in HTML is used to specify how the browser handles cross-origin requests for scripts. 
+Cross-origin requests occur when resources (like scripts, images, or data) are requested from a domain different from the one the web page is loaded from. -->
+
+//Summary 
+wrote hello world using html
+wrote hello world using javascript 
+wrote hello world using React and CDN to inject it into our app
+React element is a javascript object  using react DOM to create a root 
+then the root.render is used to inject the reactelement into our page and converted into an html 
+//React.CreateElement("the name of the element", {the attributes}, the children/content)
+// if you need to pass two or more children in the last paramenter of React.CreateElement, use and Array
+// if there is a content already in the root div , the root.render will replace the content inside root not appended 
+React is a liberay because it can be used in an already existing app using CDN , or just a part of the app 
+a framework comes with a lot of baggages with it 
+
+git branch -M main makes main your main branch 
+
+
+
+Assignments 
+asyn vs defer attributes in javascript
+both are external attributes use along with script tags to load the external attribute on the web page 
+
+using the normal  scr in our script tag 
+when the  html passing  encounters a script tag it will wait then the script are fected and excuted then the  html passing continues 
+
+using an aync in our script tag 
+ the script will be fetch along side the  html passing and when fetch  and available in the browser the  html passing will be paused and the script excututed then the  html passing will continue 
+
+using the defer attributes 
+the  html passing passing goes on and the script  are fected in parallel then when  the  html passing passing is completed the script runs 
+
+when to use what 
+
+the async attribute  does not gurantee the order of excution 
+
+if some script are depenindent on each other then defer would be prefered 
+
+if you have to load an external attribute script when are independent of our normal code use an snync 
+
+defer attribute is prefered because it maintains the order of excution 

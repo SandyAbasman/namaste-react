@@ -1,0 +1,143 @@
+
+What is needed to make your app ready to go to production :
+creating your own create react app, so as to appreciate the beauty of the engineering behind the scence 
+
+alot of other packages makes our code and app fast and production, one of them is 
+NPM - manages packages but it does not stand for node package manager 
+npm is a standard repository for all packages 
+
+What is package.json:
+Package.json is a configuration for npm 
+we need package.json to configure our npm packages 
+
+What dependencies to install
+the most important dependency in our app is a "bundler"
+A bundler packages your app so it can be shipped to production 
+the create react app behind the scence uses babble and web-pack behind the scence 
+
+Parcel is a bundler 
+
+npm install -D parcel 
+
+we can have two types of dependencies in our app 
+1. Dev dependencies
+2. Normal dependencies
+
+Dev dependency , is generally required in the development phase
+Normal dependencies is needed in the production 
+
+so adding -D means telling the app that you need parcel as a dev dependency
+
+parcel is a beast 
+
+
+"parcel": "^2.13.3"  caret ^ : when there is a minor updgrade parcel will auto update to the version 
+"parcel": "~2.13.3" tilda ~ : when there is a major updgrade like to 3.0.0  parcel will auto updtae to the version
+
+^ caret is safe to use because the major upgrade won't break your code 
+
+what is package.lock.json : 
+it keeps a track of exact  version of the dependencies that was installed 
+
+
+what is the difference between package.json and package.lock.json
+the version in package.json can be upgraded but package.lock.json locks the   exact version of dependencies that is used in the project 
+
+package.lock.json has a hatch  in the intergrity to verify that what ever version is there in my dev machine is the same that is deployed 
+
+What is node modules :
+node modules conatains all the codes that we fetched from npm 
+it conatin the data that our dependencies need 
+
+parcel has it own dependencies that needs it's own dependencies 
+this is known as TRANSIT dependencies
+
+this is why we have many folders inside node 
+
+
+how many package.json does our code have?:
+every dependencies have it own package.json and it own dependencies in node modules 
+
+we should not add node modules to github , so we create a gitignore file and write the files we need it to ignore
+
+the package.json and package.lock.json keeps track of the version needed and if we run npm install the version that's needed will be installed 
+
+we should but our package.json and package.lock.json to github
+so that what ever is on my local machine is  the same on github
+
+what ever can be regenerated should not be on github
+
+npx parcel index.html
+ this is used for parcel to build our app 
+
+just as we have npm  we have npx
+
+npx is used to excute a package 
+
+another way to get react into our app is through npm
+
+cdn link is not a prefered way to get npm into our app 
+because it will make a network fetch we need it already in our node modules
+
+it's better to have it on our package.json so it can keep upgrade
+npm install react  :
+we are installing react as a normal dependency 
+
+we have to always import React from react node module 
+
+# Parcel does 
+-Dev build 
+-local server 
+-HMR - Hot Module Replacement 
+-File Watching Algorithm - written in c++
+-Image optimization
+-on the production build , it does minification of our file 
+-bundling 
+-compresses our file 
+-consistent hashing (keeps track of all our version dependencies)
+-code spiliting 
+-Difficiatial bundling - (to support older browsers)
+-Diagnostics
+-Error handling and suggestions 
+-allows HTTPs hosting 
+-realiable caching 
+-tree shaking - remove unused codes 
+- different dev and production build 
+
+so many things makes our app fast not just react 
+
+usful for system design interview
+
+
+"READ ON PARCEL"
+
+creating a prod build 
+npx parcel build index.html
+we have to remove the main entry  in the package.json because it conflit with the entry
+
+our production build asaves on dist 
+where there are 3 files , everything will be compressed into the 3 files 
+
+the production build is fast optimized and production ready 
+
+the dist and .parcel-cache can be regenerated so it should be put inside gitignore 
+
+marking our app compatible for older browser 
+using browsers list 
+
+we have to tell our app what browsers list our app will support 
+ to know the broswerslist go to broswers list 
+
+ "browsersList":[
+    "last 2 version"
+  ]"
+
+you can use broswerlist to  configure it to work on country specific 
+
+we have created our own create react app with parcel 
+
+when an interviewer ask why is your app fast, you should answer accordenly 
+
+
+
+

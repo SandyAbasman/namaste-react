@@ -1,0 +1,38 @@
+when you are building an app 
+
+the first thing to do is to plan 
+plan the UI 
+
+
+
+inline styles takes a javascript object 
+
+styles={{backgroundColor:red}}
+
+or 
+
+styling={
+    color:red,
+}
+
+styles={styling}
+
+big application uses "config driven ui"
+
+when the UI is driven by data . ie controlling your ui using data/config from the backend 
+
+ui layer 
+data layer 
+be good at both 
+
+cloudinary is a CDN for hosting images 
+
+Best practices 
+1.Use optional changing 
+2.Always map and give a map key
+
+always use unique keys 
+or use index as a last rsort not recommended 
+
+
+

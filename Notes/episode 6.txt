@@ -1,0 +1,11 @@
+whenever a state variable updates, react tiggers a reconcilication cycle (re-renders the component)
+
+React is faster because it can effiently manipulate the dom
+using the reconciliation alogrithmn 
+
+ whenever you change a state variable react renders 
+ 
+
+ Cors error is whenever your trying to make an api call from one origin to another 
+
+ crosproxy.io can be used to bypass CORS error 

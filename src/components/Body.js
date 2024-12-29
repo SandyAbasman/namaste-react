@@ -7,6 +7,8 @@ import Shimmer from "./Shimmer";
 const Body = () => {
   // Local State Variable - Super powerful variable
   const [listOfRestaurants, setListOfRestraunt] = useState([]);
+  const [searchedText, setSearchedText] = useState("");
+  const [filteredRestursnt, setFilteredResturant] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -14,32 +16,45 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.9615398&lng=79.2961468&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING"
     );
+
     const jsonData = await data.json();
 
-    // console.log(resData[0].info);
+    console.log(jsonData.data);
 
     const resData =
-      jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
 
-    console.log(resData);
-
     setListOfRestraunt(resData);
+    setFilteredResturant(resData);
   };
 
-  // if (listOfRestaurants.length === 0) {
-  //   return <Loader />;
-  // }
-  return listOfRestaurants.length === 0 ? (
+  return filteredRestursnt.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
       <div className="filter">
         <div>
-          <input type="text" className="search-box" value />
-          <button onClick={() => console.log("search clicked")} >Search</button>
+          <input
+            type="text"
+            className="search-box"
+            value={searchedText}
+            onChange={(e) => setSearchedText(e.target.value)}
+          />
+          <button
+            onClick={() => {
+              const oklist = listOfRestaurants.filter((item) =>
+                item.info.name
+                  .toLocaleLowerCase()
+                  .includes(searchedText.toLocaleLowerCase())
+              );
+              setFilteredResturant(oklist);
+            }}
+          >
+            Search
+          </button>
         </div>
         <button
           className="filter-btn"
@@ -47,14 +62,14 @@ const Body = () => {
             const filteredList = listOfRestaurants.filter(
               (res) => res.info.avgRating > 4
             );
-            setListOfRestraunt(filteredList);
+            setFilteredResturant(filteredList);
           }}
         >
           Top Rated Restaurants
         </button>
       </div>
       <div className="res-container">
-        {listOfRestaurants.map((restaurant, index) => (
+        {filteredRestursnt.map((restaurant, index) => (
           <RestaurantCard key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
