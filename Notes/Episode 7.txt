@@ -3,6 +3,8 @@
 if no dependency is array ==> useEffect is called on every render
 
 
+
+don't call a use state inside a forloop, or an if statement or any conditional 
 old routing method
 
 
