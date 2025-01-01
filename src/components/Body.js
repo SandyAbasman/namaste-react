@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import resList from "../utils/mockData";
 import Loader from "../Loading";
@@ -8,20 +8,22 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useResturantList from "../utils/useResturantList";
 
-
-
 const Body = () => {
   // Local State Variable - Super powerful variable
 
   const [searchedText, setSearchedText] = useState("");
 
   const onlineStatus = useOnlineStatus();
-  const [listOfRestaurants, filteredRestursnt] = useResturantList();
+  const [listOfRestaurants, filteredRestursnt, setFilteredResturant] =
+    useResturantList();
+
+  const PromotedLabel = withPromotedLabel(RestaurantCard);
 
   if (onlineStatus === false) {
     return <h1> seems you are offline now</h1>;
   }
 
+  console.log(listOfRestaurants);
   return filteredRestursnt.length === 0 ? (
     <Shimmer />
   ) : (
@@ -61,8 +63,15 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRestursnt.map((restaurant, index) => (
-          <Link to={"/restaurant/" + restaurant.info.id}>
-            <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          <Link
+            to={"/restaurant/" + restaurant.info.id}
+            key={restaurant.info.id}
+          >
+            {restaurant.info.promoted ? (
+              <PromotedLabel resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>

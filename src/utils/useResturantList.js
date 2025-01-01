@@ -16,14 +16,19 @@ const useResturantList = () => {
     console.log(jsonData);
 
     const resData =
-      jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
 
     setListOfRestraunt(resData);
     setFilteredResturant(resData);
   };
 
-  return [listOfRestaurants, filteredRestursnt];
+  return [
+    listOfRestaurants,
+    filteredRestursnt,
+    setFilteredResturant,
+    setListOfRestraunt,
+  ];
 };
 
 export default useResturantList;
